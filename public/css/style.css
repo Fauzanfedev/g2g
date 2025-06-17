@@ -1,0 +1,1489 @@
+/* public/css/style.css */
+
+/* --- CSS Reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- Global Variables (Color Palette: Urban Zen) --- */
+:root {
+    --color-primary-dark-teal: #228b22;         /* Header, CTA utama, elemen branding */
+    --color-secondary-light-warm-gray: #f0fdec; /* Background utama */
+    --color-tertiary-soft-beige: #f6edd9;       /* Background kartu/konten */
+    --color-accent-mustard-yellow: #7a9972;     /* Aksen, highlight, tombol sekunder */
+    --color-text-charcoal: #333333;             /* Teks utama gelap */
+    --color-text-light: #666666;                /* Teks sekunder/abu-abu */
+    --color-white: #FFFFFF;                     /* Putih */
+    --color-black: #000000;                     /* Hitam */
+
+    --font-family-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-family-headings: 'Arial', sans-serif;
+
+    --border-radius-sm: 5px;
+    --border-radius-md: 10px;
+    --border-radius-lg: 20px;
+    --border-radius-pill: 30px;
+
+    --shadow-light: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 4px 10px rgba(0, 0, 0, 0.05);
+    --shadow-strong: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+    --transition-smooth: all 0.3s ease-in-out;
+}
+
+/* --- Base Body & Typography --- */
+body, html {
+    height: 100%;
+    overflow-x: hidden;
+    font-family: var(--font-family-primary);
+    line-height: 1.6;
+    color: var(--color-text-charcoal);
+    background-color: var(--color-secondary-light-warm-gray);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-headings);
+    color: var(--color-primary-dark-teal);
+    margin-bottom: 0.5em;
+    line-height: 1.2;
+}
+
+h1 { font-size: 2.2em; } /* Default smaller for mobile-first */
+h2 { font-size: 1.6em; }
+h3 { font-size: 1.2em; }
+p { margin-bottom: 1em; }
+
+a {
+    color: var(--color-primary-dark-teal);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-accent-mustard-yellow);
+}
+
+ul { list-style: none; }
+
+/* --- Layout Utilities --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+section {
+    padding: 40px 0; /* Default smaller padding for mobile-first */
+}
+
+/* --- Main Header / Navbar --- */
+.main-header, .alt-header {
+    position: absolute; /* Changed to fixed for sticky header effect */
+    width: 100%;
+    padding: 0 15px; /* Adjust padding for mobile */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: var(--transition-smooth);
+}
+
+/* Base Navbar style for mobile */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0; /* Adjust padding for mobile */
+    max-width: 100%;
+    margin: 0 auto;
+    transition: var(--transition-smooth);
+    position: relative;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Smaller gap for mobile */
+}
+
+.logo {
+    height: 35px; /* Smaller logo for mobile */
+    width: auto;
+    transition: var(--transition-smooth);
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Smaller gap for mobile */
+}
+
+.navigation-links {
+    display: none; /* Hidden by default on mobile */
+    flex-direction: column;
+    position: absolute;
+    top: 100%; /* Position below the header */
+    left: 0;
+    width: 100%;
+    background-color: var(--color-primary-dark-teal); /* Menu background */
+    padding: 15px 0;
+    box-shadow: var(--shadow-medium);
+    transition: transform 0.3s ease-in-out;
+    transform: translateY(-100%); /* Start off-screen */
+    z-index: 999;
+}
+
+.navigation-links.active {
+    display: flex; /* Show when active */
+    transform: translateY(0); /* Slide in */
+}
+
+.navigation-links li {
+    width: 100%;
+    text-align: center;
+}
+
+.navigation-links li a {
+    color: var(--color-white);
+    padding: 12px 20px;
+    display: block; /* Make links take full width for easier tapping */
+    border-radius: 0; /* Remove border-radius for full-width links */
+    font-weight: 500;
+    font-size: 16px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.navigation-links li a:hover,
+.navigation-links li a.active {
+    background: rgba(255, 255, 255, 0.15);
+    transform: none; /* Remove transform on hover for mobile */
+    box-shadow: none;
+}
+
+.btn-login {
+    background-color: var(--color-accent-mustard-yellow); /* Change to accent color for visibility */
+    color: var(--color-text-charcoal);
+    padding: 8px 15px; /* Smaller padding for mobile */
+    border-radius: var(--border-radius-pill);
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    text-decoration: none;
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.btn-login:hover {
+    background-color: #E0BB00;
+    color: var(--color-text-charcoal);
+}
+
+/* Hamburger Menu Icon */
+.hamburger-menu {
+    display: flex; /* Show by default on mobile */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001; /* Above navigation links */
+    position: relative; /* For animation */
+}
+
+.hamburger-menu:focus {
+    outline: none;
+}
+
+.hamburger-menu .bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-white); /* Color of bars */
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Animation for hamburger menu */
+.hamburger-menu.open .bar:nth-child(1) {
+    transform: translateY(11px) rotate(45deg);
+}
+.hamburger-menu.open .bar:nth-child(2) {
+    opacity: 0;
+}
+.hamburger-menu.open .bar:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+}
+
+/* Scrolled Header */
+.main-header.scrolled, .alt-header.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-medium);
+    padding: 5px 15px;
+}
+.main-header.scrolled .navbar, .alt-header.scrolled .navbar {
+    background: transparent; /* No background when scrolled */
+    color: var(--color-primary-dark-teal);
+    transform: scale(1); /* No scaling when scrolled */
+}
+.main-header.scrolled .logo, .alt-header.scrolled .logo {
+    filter: brightness(1) saturate(100%) invert(0%); /* Reset filter to normal */
+}
+.main-header.scrolled .navigation-links li a, .alt-header.scrolled .navigation-links li a {
+    color: var(--color-white); /* Links stay white in mobile menu */
+}
+.main-header.scrolled .btn-login, .alt-header.scrolled .btn-login {
+    background-color: var(--color-primary-dark-teal); /* Dark teal button when scrolled */
+    color: var(--color-white);
+}
+.main-header.scrolled .btn-login:hover, .alt-header.scrolled .btn-login:hover {
+    background-color: #083A38;
+}
+.main-header.scrolled .hamburger-menu .bar, .alt-header.scrolled .hamburger-menu .bar {
+    background-color: var(--color-primary-dark-teal); /* Dark teal bars when scrolled */
+}
+
+/* --- Hero Section --- */
+.hero {
+    position: relative;
+    height: 80vh; /* Shorter hero for mobile */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px; /* Adjust padding */
+    text-align: center; /* Center text for mobile */
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6); /* Slightly darker overlay for better text contrast */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative; /* Changed to relative for simpler centering */
+    left: auto;
+    padding: 0; /* Remove specific padding */
+    z-index: 2;
+    max-width: 90%; /* Max width for content */
+    color: var(--color-white);
+}
+
+.hero-content h1 {
+    font-size: 2.2em; /* Smaller font for mobile */
+    font-weight: 900;
+    margin-bottom: 10px;
+    line-height: 1.2;
+    color: var(--color-white);
+}
+
+.hero-content p {
+    font-size: 0.95em; /* Smaller font for mobile */
+    font-weight: 400;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    letter-spacing: 0.03em;
+}
+
+.hero-content .text-link {
+    font-size: 1em; /* Smaller font for mobile */
+    text-align: center; /* Ensure link is centered */
+    display: inline-block; /* Ensure it takes full padding */
+}
+
+/* Primary button (Global) */
+.btn-primary {
+    background-color: var(--color-primary-dark-teal);
+    border: none;
+    color: var(--color-white);
+    padding: 10px 25px; /* Adjust padding for mobile */
+    border-radius: var(--border-radius-pill);
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.9em;
+}
+
+.btn-primary:hover {
+    background-color: #083A38;
+}
+
+/* --- Why G2G Section --- */
+.why-g2g {
+    padding: 2rem 1rem;
+    background-color: var(--color-secondary-light-warm-gray);
+    color: var(--color-text-charcoal);
+}
+
+.why-g2g-container {
+    display: flex;
+    flex-direction: column; /* Default to column for mobile-first */
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 2rem;
+    text-align: center; /* Center text in mobile */
+}
+
+.label-green {
+    font-size: 1em; /* Smaller label for mobile */
+    padding: 0.4rem 0.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.why-g2g-text p {
+    font-size: 1em; /* Adjust font size */
+    line-height: 1.6;
+}
+
+.why-g2g-image {
+    max-width: 100%; /* Ensure image fits */
+    text-align: center;
+}
+
+.why-g2g-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-light);
+}
+
+/* --- Ampas Cuans Section --- */
+.ampas-cuans {
+    background-color: var(--color-tertiary-soft-beige);
+    margin: 20px auto; /* Adjust margin for mobile */
+    padding: 2rem 1rem;
+    border-radius: var(--border-radius-lg);
+    max-width: 1200px;
+    box-shadow: var(--shadow-medium);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem; /* Smaller gap */
+    position: relative;
+    padding-top: calc(1rem + 20px);
+}
+
+.ampas-cuans-container {
+    display: flex; /* Change to flex for mobile stacking */
+    flex-direction: column;
+    margin-top: 20px;
+    gap: 1rem;
+    width: 100%;
+    justify-items: center;
+    align-items: center;
+}
+
+.ampas-cuans-title-box {
+    padding: 8px 15px; /* Smaller padding */
+    border-radius: 30px; /* Simpler border-radius for mobile */
+    top: 0;
+    left: 50%; /* Center at the top */
+    transform: translate(-50%, -50%);
+    white-space: normal; /* Allow text wrapping if needed */
+    max-width: 90%; /* Limit width */
+    text-align: center; /* Center text */
+}
+
+.ampas-cuans-label {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+}
+
+.card {
+    border-radius: var(--border-radius-md); /* Smaller radius for cards */
+    padding: 0.8rem 1rem;
+    min-height: 150px; /* Smaller min-height */
+    max-width: 100%;
+    margin-bottom: 0;
+}
+
+.card-kopi, .card-cuan {
+    min-height: 150px; /* Consistent height for all cards on mobile */
+}
+
+.card-content h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+}
+
+.card-content p {
+    font-size: 0.85rem;
+}
+
+.btn-join {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    align-self: center; /* Center button on mobile */
+    width: 100%; /* Full width button */
+}
+
+/* --- Aktor Dibalik G2G Section --- */
+.aktor-dibalik-g2g {
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.aktor-container {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+}
+
+.aktor-label {
+    font-size: 1em;
+    padding: 0.4rem 0.8rem;
+    margin-bottom: 0.8rem;
+    max-width: 90%; /* Limit width */
+    text-align: center; /* Center text */
+}
+
+.aktor-content {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.aktor-image {
+    max-width: 100%;
+    border-radius: var(--border-radius-md);
+}
+
+.aktor-texts {
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.aktor-text-block {
+    padding: 0.8rem 1.2rem;
+    border-radius: var(--border-radius-md);
+}
+
+.aktor-text-block h3 {
+    font-size: 1.1em;
+    margin-bottom: 0.3rem;
+}
+
+.aktor-text-block p {
+    font-size: 0.9em;
+}
+
+/* --- Fitur Utama Section --- */
+.fitur-utama {
+    padding: 30px 0;
+    text-align: center;
+}
+
+.fitur-container {
+    padding: 30px;
+    border-radius: var(--border-radius-md);
+}
+
+.fitur-container .label-green {
+    font-size: 1em;
+    padding: 0.4rem 0.8rem;
+    margin-bottom: 20px;
+}
+
+.feature-boxes-wrapper {
+    flex-direction: column; /* Stack vertically for mobile */
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.feature-box-item {
+    padding: 20px;
+    max-width: 90%; /* Adjust max-width for mobile */
+    min-width: unset;
+    margin: 0 auto; /* Center the box */
+}
+
+.feature-number {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+
+.feature-box-item p {
+    font-size: 1em;
+}
+
+/* --- Cara Kerja G2G Section --- */
+.cara-kerja-g2g {
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.cara-kerja-container {
+    padding: 30px;
+    border-radius: var(--border-radius-md);
+}
+
+.label-green-outline {
+    font-size: 1em;
+    padding: 0.4rem 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.steps-grid {
+    grid-template-columns: 1fr; /* Single column for mobile */
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.step-item {
+    padding: 20px;
+    border-radius: var(--border-radius-md);
+}
+
+.step-number {
+    font-size: 1.8em;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 15px auto;
+}
+
+.step-item h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.step-item p {
+    font-size: 0.9em;
+}
+
+/* --- Main Footer --- */
+.main-footer {
+    padding: 30px 15px 15px; /* Adjust padding for mobile */
+    font-size: 0.85em;
+}
+
+.main-footer .container {
+    flex-direction: column; /* Stack vertically for mobile */
+    align-items: center; /* Center items */
+    gap: 20px;
+}
+
+.footer-section {
+    min-width: unset;
+    width: 100%;
+    padding: 0; /* Remove horizontal padding */
+    text-align: center; /* Center content */
+}
+
+.footer-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.footer-section p {
+    font-size: 0.9em;
+    margin-bottom: 8px;
+    justify-content: center; /* Center content for icons+text */
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+    font-size: 0.9em;
+}
+
+.footer-icon {
+    height: 18px;
+}
+
+.social-icons {
+    justify-content: center; /* Center social icons */
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.social-icon {
+    height: 25px;
+}
+
+.footer-bottom {
+    margin-top: 30px;
+    padding-top: 15px;
+    font-size: 0.8em;
+}
+
+/* --- CSS for Page Specific Sections (alt-header pages) --- */
+
+.page-content {
+    padding-top: 80px; /* Adjust padding to clear fixed header */
+}
+
+.form-page-content {
+    padding-top: 80px; /* Adjust padding to clear fixed header */
+}
+
+/* Section Navigasi Pills */
+.top-nav-pills-section {
+    padding: 20px 0 0; /* Adjust padding */
+}
+
+.page-nav-pills-container {
+    flex-direction: column; /* Stack pills vertically for mobile */
+    gap: 10px;
+    padding: 10px;
+    max-width: 90%; /* Adjust max-width */
+    margin: 0 auto 20px auto; /* Center and adjust margin */
+}
+
+.pill-nav-item {
+    font-size: 13px;
+    padding: 10px 15px;
+    width: 100%; /* Full width for easier tapping */
+    text-align: center;
+    border-radius: var(--border-radius-md); /* Consistent border radius */
+}
+
+/* Breadcrumbs Styling */
+.breadcrumbs-section {
+    padding: 10px 0 15px;
+}
+
+.breadcrumbs {
+    font-size: 0.8em;
+    text-align: center; /* Center breadcrumbs */
+}
+
+/* Offer Form Section - Utama (Container Gambar + Form) */
+.offer-form-section {
+    padding: 20px 15px;
+}
+
+.form-card-wrapper {
+    flex-direction: column; /* Stack image and form vertically */
+    max-width: 90%; /* Adjust max-width for mobile */
+    margin: 0 auto;
+    border-radius: var(--border-radius-md); /* Smaller radius */
+}
+
+.form-image-container {
+    max-width: 100%;
+    min-height: 200px; /* Minimum height for image */
+    border-radius: var(--border-radius-md) var(--border-radius-md) 0 0; /* Top corners rounded */
+}
+
+.form-image {
+    border-radius: var(--border-radius-md) var(--border-radius-md) 0 0;
+}
+
+.form-content-block {
+    padding: 20px; /* Smaller padding */
+}
+
+.form-title {
+    font-size: 1.5em;
+    text-align: center; /* Center title */
+    margin-bottom: 8px;
+}
+
+.form-subtitle, .form-instruction {
+    font-size: 0.9em;
+    text-align: center; /* Center text */
+    margin-bottom: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+    padding: 10px;
+    font-size: 0.95em;
+}
+
+.phone-input-group .country-code {
+    padding: 10px 8px;
+    font-size: 0.95em;
+}
+
+.phone-input-group input[type="tel"] {
+    padding: 10px;
+}
+
+.g2g-form .button.primary {
+    padding: 10px 20px;
+    font-size: 1em;
+    margin-top: 15px;
+    width: 100%; /* Full width button */
+}
+
+/* List Offers Section */
+.list-offers-main-section {
+    padding: 20px 15px;
+}
+
+.list-offers-container {
+    padding: 20px;
+    max-width: 90%;
+    margin: 0 auto;
+    border-radius: var(--border-radius-md);
+}
+
+.search-bar {
+    flex-direction: column; /* Stack search input and button */
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    width: 100%;
+    max-width: unset; /* Remove max-width on mobile */
+    padding: 10px 15px;
+    font-size: 0.95em;
+    border-radius: var(--border-radius-md); /* Make it less pill-shaped if stacked */
+}
+
+.search-bar button {
+    width: 100%; /* Full width button */
+    height: 40px; /* Maintain height */
+    border-radius: var(--border-radius-md); /* Rectangle button */
+    padding: 0; /* Remove padding */
+    font-size: 1em; /* For accessibility if text is ever added */
+}
+
+.offers-grid {
+    grid-template-columns: 1fr; /* Single column */
+    gap: 20px;
+}
+
+.offer-card {
+    flex-direction: column; /* Stack image and details vertically */
+    align-items: flex-start;
+    padding: 15px;
+    gap: 10px;
+    border-radius: var(--border-radius-md);
+}
+
+.offer-image {
+    width: 100%;
+    height: 150px; /* Adjust height for mobile card image */
+    border-radius: var(--border-radius-md);
+    margin-bottom: 0; /* Remove default margin */
+}
+
+.offer-details {
+    padding: 0;
+    width: 100%; /* Occupy full width */
+}
+
+.offer-name {
+    font-size: 1.1em;
+    margin-bottom: 3px;
+}
+
+.offer-type {
+    font-size: 0.8em;
+    padding: 2px 6px;
+    margin-bottom: 3px;
+}
+
+.offer-address, .offer-quantity {
+    font-size: 0.85em;
+    margin-bottom: 5px;
+}
+
+.contact-offer-button {
+    width: 100%; /* Full width button */
+    padding: 8px 15px;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+/* Guide Page Specific Styling */
+.guide-main-section {
+    padding: 20px 15px;
+}
+
+.guide-container {
+    padding: 20px;
+    max-width: 90%;
+    margin: 0 auto;
+    border-radius: var(--border-radius-md);
+}
+
+.guide-page-title {
+    font-size: 1.8em;
+    margin-bottom: 8px;
+}
+
+.guide-page-subtitle {
+    font-size: 0.9em;
+    margin-bottom: 20px;
+}
+
+.guide-progress-block {
+    padding: 15px;
+    margin-bottom: 25px;
+}
+
+.guide-progress-block h2 {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+
+.progress-bar-container {
+    width: 90%;
+    height: 12px;
+    margin: 0 auto 10px auto;
+}
+
+.progress-status {
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+.mushroom-cartoon {
+    max-width: 100px;
+    margin-top: 10px;
+}
+
+.guide-steps-wrapper {
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.guide-step {
+    padding: 15px;
+    border-radius: var(--border-radius-md);
+}
+
+.step-header {
+    flex-direction: row; /* Keep number and title in a row */
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2em;
+}
+
+.guide-step h3 {
+    font-size: 1.1em;
+    margin: 0;
+    flex-grow: 1; /* Allow title to take space */
+}
+
+.guide-illustration {
+    width: 100%; /* Full width for illustration */
+    height: 150px; /* Adjust height */
+    margin-bottom: 10px; /* Space below image */
+}
+
+.step-content p {
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+.step-checkbox-label {
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+.step-checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+}
+
+/* TIPS & TRIK BUDIDAYA JAMUR Section */
+.tips-budidaya-section {
+    padding: 20px 15px;
+}
+
+.tips-budidaya-container {
+    padding: 20px;
+    max-width: 90%;
+    margin: 0 auto;
+    border-radius: var(--border-radius-md);
+}
+
+.tips-header {
+    margin-bottom: 20px;
+}
+
+.label-tips {
+    font-size: 0.9em;
+    padding: 8px 20px;
+}
+
+.tips-grid {
+    grid-template-columns: 1fr; /* Single column */
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.tip-item {
+    padding: 20px;
+    border-radius: var(--border-radius-md);
+}
+
+.tip-item .tip-number {
+    font-size: 1.8em;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 15px auto;
+}
+
+.tip-item h3 {
+    font-size: 1.1em;
+    margin-bottom: 8px;
+}
+
+.tip-item p {
+    font-size: 0.9em;
+}
+
+
+/* --- Desktop Styles (min-width media queries) --- */
+@media (min-width: 768px) { /* Tablet landscape and up */
+    h1 { font-size: 2.5em; }
+    h2 { font-size: 1.8em; }
+    h3 { font-size: 1.4em; }
+    section { padding: 60px 0; }
+
+    /* Navbar Desktop */
+    .main-header, .alt-header {
+        position: fixed; /* Keep fixed for desktop */
+        padding: 0 40px;
+    }
+    .navbar {
+        padding: 16px 32px;
+    }
+    .logo { height: 42px; }
+    .navbar-right { gap: 12px; }
+    .hamburger-menu { display: none; } /* Hide hamburger menu on desktop */
+    .navigation-links {
+        display: flex; /* Show navigation links on desktop */
+        flex-direction: row;
+        position: static;
+        top: auto;
+        left: auto;
+        width: auto;
+        background-color: transparent;
+        padding: 0;
+        box-shadow: none;
+        transform: none;
+    }
+    .navigation-links li a {
+        color: var(--color-white); /* Back to white for main header */
+        padding: 10px 20px;
+        border-radius: var(--border-radius-pill);
+        display: inline-block;
+        font-size: 18px;
+    }
+    .btn-login {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+
+    /* Scrolled Header Desktop */
+    .main-header.scrolled, .alt-header.scrolled {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 10px 0;
+    }
+    .main-header.scrolled .navbar, .alt-header.scrolled .navbar {
+        background: var(--color-primary-dark-teal); /* Dark teal background when scrolled */
+        transform: scale(0.95); /* Scale down when scrolled */
+    }
+    .main-header.scrolled .logo, .alt-header.scrolled .logo {
+        filter: brightness(0) saturate(100%) invert(20%) sepia(25%) saturate(1500%) hue-rotate(146deg); /* Green logo when scrolled */
+    }
+    .main-header.scrolled .navigation-links li a, .alt-header.scrolled .navigation-links li a {
+        color: var(--color-primary-dark-teal); /* Dark teal links when scrolled */
+    }
+    .main-header.scrolled .btn-login, .alt-header.scrolled .btn-login {
+        background-color: var(--color-accent-mustard-yellow);
+        color: var(--color-primary-dark-teal);
+    }
+    .main-header.scrolled .btn-login:hover, .alt-header.scrolled .btn-login:hover {
+        background-color: #E0BB00;
+        color: var(--color-primary-dark-teal);
+    }
+
+    /* Hero Section Desktop */
+    .hero {
+        height: 100vh;
+        padding: 0 30px;
+        text-align: left;
+    }
+    .hero-content {
+        position: absolute;
+        left: 20px;
+        padding: 0 40px;
+        max-width: 800px;
+    }
+    .hero-content h1 {
+        font-size: 40px;
+        margin-bottom: 15px;
+    }
+    .hero-content p {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+    .hero-content .text-link {
+        font-size: 1.1em;
+    }
+
+    /* Why G2G Desktop */
+    .why-g2g-container {
+        flex-direction: row; /* Back to row for desktop */
+        justify-content: space-between;
+        text-align: left;
+    }
+    .label-green {
+        font-size: 1.2rem;
+        padding: 0.5rem 1rem;
+        margin-bottom: 1rem;
+    }
+    .why-g2g-text p {
+        font-size: 1.1rem;
+    }
+    .why-g2g-image {
+        flex: 1 1 300px;
+    }
+
+    /* Ampas Cuans Desktop */
+    .ampas-cuans {
+        margin: 40px auto;
+        padding: 3rem 2rem;
+        padding-top: calc(1rem + 20px);
+    }
+    .ampas-cuans-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas:
+            ". . ampas-title"
+            "card-kopi card-menumpuk card-cuan"
+            "card-kopi card-solusi card-cuan"
+            ". . cta-button";
+        gap: 1.5rem;
+        margin-top: 30px;
+    }
+    .ampas-cuans-title-box {
+        left: 88%;
+        border-radius: 40px 40px 10px 40px;
+        padding: 10px 20px;
+        text-align: left;
+    }
+    .ampas-cuans-label {
+        padding: 10px 25px;
+        font-size: 1rem;
+    }
+    .card {
+        padding: 1rem 1.5rem;
+        min-height: 180px;
+    }
+    .card-kopi { grid-area: card-kopi; min-height: 375px; }
+    .card-cuan { grid-area: card-cuan; min-height: 375px; }
+    .btn-join {
+        grid-area: cta-button;
+        justify-self: end;
+        align-self: end;
+        padding: 10px 25px;
+        font-size: 1rem;
+        width: max-content; /* Reset width */
+    }
+
+    /* Aktor Dibalik G2G Desktop */
+    .aktor-container {
+        flex-direction: column; /* Still column, but layout inside changes */
+        text-align: left;
+    }
+    .aktor-label {
+        font-size: 1.2rem;
+        padding: 0.5rem 1rem;
+        max-width: max-content;
+    }
+    .aktor-content {
+        flex-direction: row;
+        gap: 2rem;
+    }
+    .aktor-texts {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .aktor-text-block h3 {
+        font-size: 1.2em;
+    }
+    .aktor-text-block p {
+        font-size: 1rem;
+    }
+
+    /* Fitur Utama Desktop */
+    .fitur-utama {
+        padding: 40px 0;
+    }
+    .fitur-container .label-green {
+        font-size: 1.2rem;
+        padding: 0.5rem 1rem;
+        margin-bottom: 25px;
+    }
+    .feature-boxes-wrapper {
+        flex-direction: row;
+        gap: 30px;
+        margin-top: 30px;
+    }
+    .feature-box-item {
+        max-width: 45%;
+        min-width: 300px;
+    }
+    .feature-number {
+        font-size: 2em;
+    }
+    .feature-box-item p {
+        font-size: 1.1rem;
+    }
+
+    /* Cara Kerja G2G Desktop */
+    .cara-kerja-g2g {
+        padding: 3rem 1rem;
+    }
+    .label-green-outline {
+        font-size: 1.2rem;
+        padding: 0.5rem 1.5rem;
+        margin-bottom: 2rem;
+    }
+    .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+        margin-top: 30px;
+    }
+    .step-number {
+        font-size: 2.2em;
+        width: 60px;
+        height: 60px;
+    }
+    .step-item h3 {
+        font-size: 1.2rem;
+    }
+    .step-item p {
+        font-size: 0.95rem;
+    }
+
+    /* Footer Desktop */
+    .main-footer {
+        padding: 40px 20px 20px;
+        font-size: 0.9em;
+    }
+    .main-footer .container {
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 30px;
+        align-items: flex-start;
+    }
+    .footer-section {
+        min-width: 250px;
+        width: auto;
+        padding: 0 15px;
+        text-align: left;
+    }
+    .footer-section p {
+        justify-content: flex-start;
+    }
+    .social-icons {
+        justify-content: flex-start;
+    }
+
+    /* Page Specific Sections Desktop */
+    .page-content, .form-page-content {
+        padding-top: 0; /* Reset padding when header is no longer fixed */
+    }
+
+    .top-nav-pills-section {
+        padding: 30px 0 0;
+    }
+    .page-nav-pills-container {
+        flex-direction: row;
+        gap: 15px;
+        padding: 10px 20px;
+        max-width: 700px;
+        margin-bottom: 40px;
+    }
+    .pill-nav-item {
+        font-size: 14px;
+        padding: 8px 20px;
+        width: auto;
+    }
+
+    .breadcrumbs-section {
+        padding: 15px 0 20px;
+    }
+    .breadcrumbs {
+        font-size: 0.9em;
+        text-align: left;
+    }
+
+    /* Offer Form Section Desktop */
+    .offer-form-section {
+        padding: 40px 15px;
+    }
+    .form-card-wrapper {
+        flex-direction: row;
+        max-width: 1000px;
+        border-radius: var(--border-radius-lg);
+    }
+    .form-image-container {
+        max-width: 400px;
+        min-height: auto;
+        border-radius: var(--border-radius-lg);
+    }
+    .form-image {
+        border-radius: var(--border-radius-lg);
+    }
+    .form-content-block {
+        padding: 40px;
+    }
+    .form-title {
+        font-size: 1.8em;
+        text-align: left;
+    }
+    .form-subtitle, .form-instruction {
+        font-size: 1.1em;
+        text-align: left;
+    }
+    .form-group label {
+        font-size: 0.95em;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+        padding: 12px;
+        font-size: 1em;
+    }
+    .phone-input-group .country-code {
+        padding: 12px 10px;
+        font-size: 1em;
+    }
+    .phone-input-group input[type="tel"] {
+        padding: 12px;
+    }
+    .g2g-form .button.primary {
+        padding: 12px 30px;
+        font-size: 1em;
+        margin-top: 25px;
+        width: auto;
+    }
+
+    /* List Offers Section Desktop */
+    .list-offers-main-section {
+        padding: 40px 15px;
+    }
+    .list-offers-container {
+        padding: 30px;
+        max-width: 1000px;
+        border-radius: var(--border-radius-lg);
+    }
+    .search-bar {
+        flex-direction: row;
+        justify-content: flex-end;
+        gap: 10px;
+        margin-bottom: 30px;
+    }
+    .search-bar input {
+        width: 250px;
+        max-width: unset;
+        font-size: 1rem;
+        border-radius: var(--border-radius-pill);
+    }
+    .search-bar button {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        padding: 0;
+    }
+    .offers-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+    }
+    .offer-card {
+        flex-direction: column;
+        align-items: stretch; /* Stretch content */
+        padding: 0; /* Padding inside content-details */
+        gap: 0;
+        border-radius: var(--border-radius-md);
+    }
+    .offer-image {
+        width: 100%;
+        height: 180px;
+        border-radius: var(--border-radius-md) var(--border-radius-md) 0 0; /* Top corners only */
+        border-bottom: 1px solid var(--color-secondary-light-warm-gray);
+        margin-bottom: 0;
+    }
+    .offer-details {
+        padding: 15px;
+        width: auto;
+    }
+    .offer-name {
+        font-size: 1.1em;
+    }
+    .offer-type {
+        font-size: 0.85em;
+        padding: 3px 8px;
+    }
+    .offer-address, .offer-quantity {
+        font-size: 0.9em;
+    }
+    .contact-offer-button {
+        width: 100%;
+        padding: 10px 15px;
+        font-size: 0.9em;
+        margin-top: auto;
+        border-radius: var(--border-radius-md);
+    }
+
+    /* Guide Page Specific Styling Desktop */
+    .guide-main-section {
+        padding: 40px 15px;
+    }
+    .guide-container {
+        padding: 30px;
+        max-width: 1000px;
+        border-radius: var(--border-radius-lg);
+    }
+    .guide-page-title {
+        font-size: 2em;
+    }
+    .guide-page-subtitle {
+        font-size: 1em;
+    }
+    .guide-progress-block {
+        padding: 25px;
+        margin-bottom: 40px;
+    }
+    .guide-progress-block h2 {
+        font-size: 1.5em;
+    }
+    .progress-bar-container {
+        width: 80%;
+        max-width: 400px;
+        height: 15px;
+    }
+    .progress-status {
+        font-size: 1em;
+    }
+    .mushroom-cartoon {
+        max-width: 120px;
+    }
+    .guide-steps-wrapper {
+        gap: 30px;
+        margin-top: 40px;
+    }
+    .guide-step {
+        padding: 25px;
+    }
+    .step-header {
+        gap: 15px;
+        margin-bottom: 15px;
+    }
+    .step-number {
+        width: 45px;
+        height: 45px;
+        font-size: 1.5em;
+    }
+    .guide-step h3 {
+        font-size: 1.3em;
+    }
+    .guide-illustration {
+        width: 400px; /* Reset to fixed width */
+        height: 200px; /* Reset to fixed height */
+        float: right; /* Text wraps around image */
+        margin-left: 20px; /* Space between text and image */
+        margin-bottom: 10px; /* Space below image */
+    }
+    /* Clear float after illustration if necessary */
+    .step-content::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    .step-content p {
+        font-size: 0.95em;
+    }
+    .step-checkbox-label {
+        font-size: 1em;
+        margin-top: 15px;
+    }
+    .step-checkbox-label input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* TIPS & TRIK BUDIDAYA JAMUR Section Desktop */
+    .tips-budidaya-section {
+        padding: 40px 15px;
+    }
+    .tips-budidaya-container {
+        padding: 30px;
+        max-width: 1000px;
+        border-radius: var(--border-radius-lg);
+    }
+    .tips-header {
+        margin-bottom: 30px;
+    }
+    .label-tips {
+        font-size: 1rem;
+        padding: 10px 25px;
+    }
+    .tips-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+        margin-top: 30px;
+    }
+    .tip-item {
+        padding: 25px;
+    }
+    .tip-item .tip-number {
+        font-size: 2.2em;
+        width: 60px;
+        height: 60px;
+    }
+    .tip-item h3 {
+        font-size: 1.2em;
+    }
+    .tip-item p {
+        font-size: 0.95em;
+    }
+}
+
+@media (min-width: 992px) { /* Larger Desktop screens */
+    .navbar-left { gap: 12px; }
+    .navbar-right { gap: 12px; }
+    .navigation-links { gap: 12px; }
+}

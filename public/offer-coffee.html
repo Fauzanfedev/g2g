@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tawarkan Ampas Kopi - Grounds2Gourmet</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <header class="alt-header">
+        <nav class="navbar container">
+            <div class="navbar-left">
+                <a href="index.html" class="logo-link">
+                    <img src="assets/images/Logo.png" alt="G2G Logo" class="logo" />
+                </a>
+            </div>
+            <div class="navbar-right">
+                <button class="hamburger-menu" aria-label="Toggle navigation menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <ul class="navigation-links">
+                    <li><a href="offer-coffee.html" class="active">Tawarkan Ampas</a></li>
+                    <li><a href="list-offers.html">Lihat Daftar Ampas</a></li>
+                    <li><a href="guide.html">Panduan Budidaya</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="form-page-content">
+        <section class="top-nav-pills-section">
+            <div class="container page-nav-pills-container">
+                <a href="offer-coffee.html" class="pill-nav-item active">Tawarkan Ampas</a>
+                <a href="list-offers.html" class="pill-nav-item">Lihat Daftar Ampas</a>
+                <a href="guide.html" class="pill-nav-item">Panduan Budidaya</a>
+            </div>
+        </section>
+
+        <section class="breadcrumbs-section">
+            <div class="container breadcrumbs">
+                <span><a href="index.html">Beranda</a></span>
+                <span>></span>
+                <span>Tawarkan Ampas</span>
+            </div>
+        </section>
+
+        <section class="offer-form-section container">
+            <div class="form-card-wrapper">
+                <div class="form-image-container">
+                    <img src="assets/images/barista.jpg" alt="Gambar Ilustrasi Barista" class="form-image">
+                </div>
+
+                <div class="form-content-block">
+                    <h2 class="form-title">ISI FORM TERLEBIH DAHULU UNTUK MENAWARKAN AMPAS</h2>
+                    <p class="form-subtitle">Silakan isi formulir berikut untuk menawarkan Ampas Anda</p>
+                    <p class="form-instruction">Isi semua biodata ini ya!!!</p>
+
+                    <form id="offerForm" class="g2g-form">
+                        <div class="form-group">
+                            <label for="offerName">Nama:</label>
+                            <input type="text" id="offerName" name="offerName" placeholder="Masukkan nama" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="offerType">Jenis Lokasi:</label>
+                            <select id="offerType" name="offerType" required>
+                                <option value="">Pilih Jenis Lokasi</option>
+                                <option value="Rumah Tangga">Rumah Tangga</option>
+                                <option value="Kafe/Resto">Kafe atau Rumah</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="offerContact">Masukkan No Kontak:</label>
+                            <div class="phone-input-group">
+                                <span class="country-code">+62</span>
+                                <input type="tel" id="offerContact" name="offerContact" placeholder="8XXXXXXXXX" required pattern="[0-9]{8,12}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="offerAmount">Jumlah Ampas:</label>
+                            <input type="text" id="offerAmount" name="offerAmount" placeholder="Contoh: 15 kg" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="offerArea">Alamat:</label>
+                            <input type="text" id="offerArea" name="offerArea" placeholder="Masukkan alamat lengkap" required>
+                        </div>
+
+                        <button type="submit" class="button primary">SIMPAN</button>
+                    </form>
+                    <div id="formMessage" class="form-message" style="display:none;"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-grid-container">
+            <div class="footer-section footer-brand-info">
+                <a href="index.html" class="footer-logo-link">
+                    <img src="assets/images/LogoG2G2.svg" alt="G2G Logo" class="footer-logo" />
+                </a>
+                <p class="brand-tagline">"Jamur yang Tumbuh dari Sisa, Bukan dari Sia-Sia."</p>
+                <p class="brand-description">Platform inovatif untuk mengubah ampas kopi menjadi sumber daya berharga, mendukung urban farming dan ekonomi sirkular.</p>
+            </div>
+
+            <div class="footer-section footer-quick-links">
+                <h3>Jelajahi G2G</h3>
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="#why-g2g">Tentang</a></li>
+                    <li><a href="#fitur-utama">Fitur</a></li>
+                    <li><a href="#cara-kerja-g2g">Cara Kerja</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section get-in-touch">
+                <h3>Hubungi Kami</h3>
+                <p>
+                    <img src="assets/icons/MapsFooter.png" alt="Location" class="footer-icon"/>
+                    Singaperbangsa Karawang, Indonesia
+                </p>
+                <p>
+                    <img src="assets/icons/MailFooter.png" alt="Email" class="footer-icon"/>
+                    informasi@grounds2gourmet.com
+                </p>
+                <div class="social-icons">
+                    <a href="https://twitter.com/edufair.himsika" target="_blank"><img src="assets/icons/FooterTwitter.png" alt="Twitter" class="social-icon"/></a>
+                    <a href="https://facebook.com/edufair.himsika" target="_blank"><img src="assets/icons/FooterFB.png" alt="Facebook" class="social-icon"/></a>
+                    <a href="https://instagram.com/edufair.himsika" target="_blank"><img src="assets/icons/FooterIG.png" alt="Instagram" class="social-icon"/></a>
+                    <a href="https://linkedin.com/company/edufair.himsika" target="_blank"><img src="assets/icons/FooterLinkedIN.png" alt="LinkedIn" class="social-icon"/></a>
+                    <a href="https://youtube.com/user/edufair.himsika" target="_blank"><img src="assets/icons/FooterYT.png" alt="YouTube" class="social-icon"/></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Grounds2Gourmet All Right Reserved. Didesain oleh Tim Doa Ayah.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="js/offerLogic.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <script type="module">
+        import { addCoffeeOffer } from './js/offerLogic.js';
+
+        const offerForm = document.getElementById('offerForm');
+        const formMessage = document.getElementById('formMessage');
+
+        function showFormMessage(message, isSuccess = false) {
+            formMessage.textContent = message;
+            formMessage.style.display = 'block';
+            if (isSuccess) {
+                formMessage.style.backgroundColor = 'var(--color-tertiary-soft-beige)';
+                formMessage.style.color = 'var(--color-primary-dark-teal)';
+                formMessage.style.borderColor = 'var(--color-primary-dark-teal)';
+            } else {
+                formMessage.style.backgroundColor = 'rgba(255, 0, 0, 0.1)';
+                formMessage.style.color = 'red';
+                formMessage.style.borderColor = 'red';
+            }
+        }
+
+        function clearValidationErrors() {
+            document.querySelectorAll('.form-group .error-message').forEach(el => el.remove());
+            document.querySelectorAll('.form-group input, .form-group select, .phone-input-group').forEach(el => {
+                el.classList.remove('input-error');
+            });
+        }
+
+        function displayFieldError(elementId, message) {
+            const inputElement = document.getElementById(elementId);
+            if (inputElement) {
+                const targetElement = inputElement.closest('.phone-input-group') || inputElement;
+                targetElement.classList.add('input-error');
+
+                const formGroup = inputElement.closest('.form-group');
+                if (formGroup && !formGroup.querySelector('.error-message')) {
+                    const errorMessage = document.createElement('small');
+                    errorMessage.className = 'error-message';
+                    errorMessage.style.color = 'red';
+                    errorMessage.style.marginTop = '5px';
+                    errorMessage.textContent = message;
+                    formGroup.appendChild(errorMessage);
+                }
+            }
+        }
+
+        if (offerForm) {
+            offerForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                clearValidationErrors();
+
+                const offerData = {
+                    name: document.getElementById('offerName').value.trim(),
+                    type: document.getElementById('offerType').value,
+                    contact: document.getElementById('offerContact').value.trim(),
+                    amount: document.getElementById('offerAmount').value.trim(),
+                    area: document.getElementById('offerArea').value.trim()
+                };
+
+                let isValid = true;
+
+                if (offerData.name.length < 3) {
+                    displayFieldError('offerName', 'Nama minimal 3 karakter.');
+                    isValid = false;
+                }
+
+                if (offerData.type === "") {
+                    displayFieldError('offerType', 'Mohon pilih jenis lokasi.');
+                    isValid = false;
+                }
+
+                const phoneRegex = /^[8-9][0-9]{7,11}$/;
+                if (!phoneRegex.test(offerData.contact)) {
+                    displayFieldError('offerContact', 'Nomor kontak tidak valid (contoh: 812xxxxxx).');
+                    isValid = false;
+                }
+
+                const amountRegex = /^(\d+(\.\d+)?)\s*(kg|gram)$/i;
+                if (!amountRegex.test(offerData.amount)) {
+                    displayFieldError('offerAmount', 'Jumlah ampas tidak valid (contoh: 15 kg atau 500 gram).');
+                    isValid = false;
+                }
+
+                if (offerData.area.length < 10) {
+                    displayFieldError('offerArea', 'Alamat minimal 10 karakter.');
+                    isValid = false;
+                }
+
+                if (isValid) {
+                    offerData.contact = '+62' + offerData.contact;
+
+                    const addedOffer = addCoffeeOffer(offerData);
+
+                    if (addedOffer) {
+                        showFormMessage('Penawaran Anda berhasil dikirim! Silakan lihat di halaman "Daftar Ampas Kopi".', true);
+                        offerForm.reset();
+                        console.log('Offer submitted and added:', addedOffer);
+                    } else {
+                        showFormMessage('Gagal mengirim penawaran. Terjadi kesalahan pada data.', false);
+                        console.error('Failed to submit offer, addCoffeeOffer returned null.');
+                    }
+                } else {
+                    showFormMessage('Mohon perbaiki kesalahan pada formulir.', false);
+                }
+            });
+        }
+    </script>
+    <script>
+        // JavaScript for Hamburger menu (add to main.js or separate file)
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.querySelector('.alt-header .hamburger-menu');
+            const navLinks = document.querySelector('.alt-header .navigation-links');
+
+            if (hamburger && navLinks) {
+                hamburger.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    hamburger.classList.toggle('open');
+                });
+
+                // Close menu when a link is clicked (for smoother UX)
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (navLinks.classList.contains('active')) {
+                            navLinks.classList.remove('active');
+                            hamburger.classList.remove('open');
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

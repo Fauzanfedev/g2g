@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daftar Penawaran Ampas Kopi - Grounds2Gourmet</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <header class="alt-header">
+        <nav class="navbar container">
+            <div class="navbar-left">
+                <a href="index.html" class="logo-link">
+                    <img src="assets/images/Logo.png" alt="G2G Logo" class="logo" />
+                </a>
+            </div>
+            <div class="navbar-right">
+                <button class="hamburger-menu" aria-label="Toggle navigation menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <ul class="navigation-links">
+                    <li><a href="offer-coffee.html">Tawarkan Ampas</a></li>
+                    <li><a href="list-offers.html" class="active">Lihat Daftar Ampas</a></li>
+                    <li><a href="guide.html">Panduan Budidaya</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="page-content">
+        <section class="top-nav-pills-section">
+            <div class="container page-nav-pills-container">
+                <a href="offer-coffee.html" class="pill-nav-item">Tawarkan Ampas</a>
+                <a href="list-offers.html" class="pill-nav-item active">Lihat Daftar Ampas</a>
+                <a href="guide.html" class="pill-nav-item">Panduan Budidaya</a>
+            </div>
+        </section>
+
+        <section class="breadcrumbs-section">
+            <div class="container breadcrumbs">
+                <span><a href="index.html">Beranda</a></span>
+                <span>></span>
+                <span>Lihat Daftar Ampas</span>
+            </div>
+        </section>
+
+        <section class="list-offers-main-section container">
+            <div class="list-offers-container">
+                <div class="search-bar">
+                    <input type="text" id="searchOfferInput" placeholder="Cari penawaran..." />
+                    <button type="button" id="searchOfferBtn">
+                        <img src="assets/icons/search.png" alt="Cari" />
+                    </button>
+                </div>
+                <div id="offersGrid" class="offers-grid">
+                    <p id="loadingMessage" class="loading-message">Memuat daftar penawaran...</p>
+                    <p id="noOffersMessage" class="no-offers-message" style="display:none;">Belum ada penawaran ampas kopi saat ini. Jadilah yang pertama!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-grid-container">
+            <div class="footer-section footer-brand-info">
+                <a href="index.html" class="footer-logo-link">
+                    <img src="assets/images/LogoG2G2.svg" alt="G2G Logo" class="footer-logo" />
+                </a>
+                <p class="brand-tagline">"Jamur yang Tumbuh dari Sisa, Bukan dari Sia-Sia."</p>
+                <p class="brand-description">Platform inovatif untuk mengubah ampas kopi menjadi sumber daya berharga, mendukung urban farming dan ekonomi sirkular.</p>
+            </div>
+
+            <div class="footer-section footer-quick-links">
+                <h3>Jelajahi G2G</h3>
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="#why-g2g">Tentang</a></li>
+                    <li><a href="#fitur-utama">Fitur</a></li>
+                    <li><a href="#cara-kerja-g2g">Cara Kerja</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section get-in-touch">
+                <h3>Hubungi Kami</h3>
+                <p>
+                    <img src="assets/icons/MapsFooter.png" alt="Location" class="footer-icon"/>
+                    Singaperbangsa Karawang, Indonesia
+                </p>
+                <p>
+                    <img src="assets/icons/MailFooter.png" alt="Email" class="footer-icon"/>
+                    edufairhimsika@gmail.com
+                </p>
+                <div class="social-icons">
+                    <a href="https://twitter.com/edufair.himsika" target="_blank"><img src="assets/icons/FooterTwitter.png" alt="Twitter" class="social-icon"/></a>
+                    <a href="https://facebook.com/edufair.himsika" target="_blank"><img src="assets/icons/FooterFB.png" alt="Facebook" class="social-icon"/></a>
+                    <a href="https://instagram.com/edufair.himsika" target="_blank"><img src="assets/icons/FooterIG.png" alt="Instagram" class="social-icon"/></a>
+                    <a href="https://linkedin.com/company/edufair.himsika" target="_blank"><img src="assets/icons/FooterLinkedIN.png" alt="LinkedIn" class="social-icon"/></a>
+                    <a href="https://youtube.com/user/edufair.himsika" target="_blank"><img src="assets/icons/FooterYT.png" alt="YouTube" class="social-icon"/></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Grounds2Gourmet All Right Reserved. Didesain oleh Tim Doa Ayah.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="js/offerLogic.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <script type="module">
+        import { getAllCoffeeOffers } from './js/offerLogic.js';
+
+        const offersGridContainer = document.getElementById('offersGrid');
+        const loadingMessage = document.getElementById('loadingMessage');
+        const noOffersMessage = document.getElementById('noOffersMessage');
+        const searchInput = document.getElementById('searchOfferInput');
+        const searchBtn = document.getElementById('searchOfferBtn');
+
+        function renderOffers(offersToRender) {
+            offersGridContainer.innerHTML = '';
+
+            if (offersToRender.length === 0) {
+                noOffersMessage.style.display = 'block';
+                loadingMessage.style.display = 'none';
+                offersGridContainer.style.display = 'block';
+            } else {
+                noOffersMessage.style.display = 'none';
+                loadingMessage.style.display = 'none';
+                offersGridContainer.style.display = 'grid';
+
+                offersToRender.forEach(offer => {
+                    const offerCard = document.createElement('div');
+                    offerCard.className = 'offer-card';
+                    offerCard.innerHTML = `
+                        <img src="assets/images/AmpasKopiMenumpuk.png" alt="Ampas Kopi dari ${offer.name}" class="offer-image" />
+                        <div class="offer-details">
+                            <span class="offer-name">${offer.name}</span>
+                            <span class="offer-type">${offer.type}</span>
+                            <p class="offer-address">${offer.area}</p>
+                            <p class="offer-quantity">${offer.amount}</p>
+                            <button class="button primary contact-offer-button" data-contact="${offer.contact}">Hubungi</button>
+                        </div>
+                    `;
+                    offersGridContainer.appendChild(offerCard);
+                });
+
+                document.querySelectorAll('.contact-offer-button').forEach(button => {
+                    button.addEventListener('click', function() {
+                        let contactNumber = this.dataset.contact.replace(/\D/g, '');
+                        if (contactNumber.startsWith('0')) {
+                            contactNumber = '62' + contactNumber.substring(1);
+                        }
+                        const whatsappUrl = `https://wa.me/${contactNumber}`;
+                        window.open(whatsappUrl, '_blank');
+                        console.log(`Redirecting to WhatsApp: ${whatsappUrl}`);
+                    });
+                });
+            }
+        }
+
+        function loadAndRenderAllOffers() {
+            loadingMessage.style.display = 'block';
+            noOffersMessage.style.display = 'none';
+            offersGridContainer.style.display = 'block';
+
+            setTimeout(() => {
+                const allOffers = getAllCoffeeOffers();
+                renderOffers(allOffers);
+            }, 100);
+        }
+
+        if (searchBtn) {
+            searchBtn.addEventListener('click', () => {
+                performSearch();
+            });
+        }
+
+        if (searchInput) {
+            searchInput.addEventListener('keyup', (event) => {
+                if (event.key === 'Enter') {
+                    performSearch();
+                }
+            });
+        }
+
+        function performSearch() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const allOffers = getAllCoffeeOffers();
+            const filteredOffers = allOffers.filter(offer =>
+                offer.name.toLowerCase().includes(searchTerm) ||
+                offer.type.toLowerCase().includes(searchTerm) ||
+                offer.area.toLowerCase().includes(searchTerm) ||
+                offer.amount.toLowerCase().includes(searchTerm)
+            );
+            renderOffers(filteredOffers);
+        }
+
+        document.addEventListener('DOMContentLoaded', loadAndRenderAllOffers);
+    </script>
+    <script>
+        // JavaScript for Hamburger menu (add to main.js or separate file)
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.querySelector('.alt-header .hamburger-menu');
+            const navLinks = document.querySelector('.alt-header .navigation-links');
+
+            if (hamburger && navLinks) {
+                hamburger.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    hamburger.classList.toggle('open');
+                });
+
+                // Close menu when a link is clicked (for smoother UX)
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (navLinks.classList.contains('active')) {
+                            navLinks.classList.remove('active');
+                            hamburger.classList.remove('open');
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
